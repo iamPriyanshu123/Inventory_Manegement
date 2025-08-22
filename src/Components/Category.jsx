@@ -70,8 +70,11 @@ export const Category = () => {
       flex: 1,
       sortable: false,
       filterable: false,
-      renderCell: (params) =>
-        params.api.getRowIndexRelativeToVisibleRows(params.id) + 1,
+      renderCell: (params) => {
+        const visibleRows = params.api.getAllRowIds();
+        const rowIndex = visibleRows.indexOf(params.id);
+        return rowIndex + 1;
+      },
     },
     { field: "name", headerName: "Category Name", flex: 1 },
     { field: "description", headerName: "Description", flex: 1 },
@@ -124,7 +127,7 @@ export const Category = () => {
                   <Stack spacing={2} direction="row" sx={{ marginTop: "10px" }}>
                     <Button
                       variant="outlined"
-                      sx={{ borderColor: "#696cff", color: "696cff" }}
+                      sx={{ borderColor: "#696cff", color: "#696cff" }}
                       onClick={() => setOpen(close)}
                     >
                       Cancel
@@ -169,7 +172,7 @@ export const Category = () => {
           }}
         />
         <br />
-        <Paper sx={{ height: 400, width: "100%" }}>
+        <Paper sx={{ height: 400, width: "100%", overflow:'auto' }}>
           <DataGrid
             rows={filteredRows}
             columns={columns}

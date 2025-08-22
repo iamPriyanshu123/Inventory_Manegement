@@ -109,7 +109,6 @@ export const Products = () => {
     getUser(data);
   };
 
-
   const handleSearch = (value) => {
     setSearchValue(value);
   };
@@ -133,33 +132,16 @@ export const Products = () => {
       },
     },
 
-    { field: "name", headerName: "Product Name", flex: 1 },
-    { field: "sku", headerName: "Stock Keeping Unit", flex: 1 },
-    { field: "description", headerName: "Description", flex: 1 },
-    { field: "category_name", headerName: "Category Name", flex: 1 },
-    { field: "price", headerName: "Price", flex: 1 },
-    { field: "cost_price", headerName: "Cost Price", flex: 1 },
-    { field: "reorder_level", headerName: "Re-order Level", flex: 1 },
-    { field: "quantity_in_stock", headerName: "Total Stock", flex: 1 },
+    { field: "name", headerName: "Product Name", flex: 1,minWidth: 120 },
+    { field: "sku", headerName: "Stock Keeping Unit", flex: 1 ,minWidth: 120},
+    { field: "description", headerName: "Description", flex: 1,minWidth: 120 },
+    { field: "category_name", headerName: "Category Name", flex: 1 ,minWidth: 120},
+    { field: "price", headerName: "Price", flex: 1 ,minWidth: 120},
+    { field: "cost_price", headerName: "Cost Price", flex: 1,minWidth: 120 },
+    { field: "reorder_level", headerName: "Re-order Level", flex: 1,minWidth: 120 },
+    { field: "quantity_in_stock", headerName: "Total Stock", flex: 1,minWidth: 120 },
   ];
-  const currencies = [
-    {
-      value: "USD",
-      label: "$",
-    },
-    {
-      value: "EUR",
-      label: "€",
-    },
-    {
-      value: "BTC",
-      label: "฿",
-    },
-    {
-      value: "JPY",
-      label: "¥",
-    },
-  ];
+
   const textFieldStyles = {
     "& .MuiInputLabel-root.Mui-focused": {
       color: "#696cff",
@@ -314,7 +296,7 @@ export const Products = () => {
                   >
                     <Button
                       variant="outlined"
-                      sx={{ borderColor: "#696cff", color: "696cff" }}
+                      sx={{ borderColor: "#696cff", color: "#696cff" }}
                       onClick={() => setOpen(close)}
                     >
                       Cancel
@@ -365,8 +347,13 @@ export const Products = () => {
             columns={columns}
             initialState={{ pagination: { paginationModel } }}
             pageSizeOptions={[5, 10]}
-            sx={{ border: 0 }}
             className="shadow-lg"
+            sx={{
+              border: 0,
+              "& .MuiDataGrid-virtualScroller": {
+                overflowX: "auto",
+              },
+            }}
           />
         </Paper>
       </main>

@@ -45,10 +45,6 @@ const navItems = [
   { label: "Sales Order", icon: <BadgeDollarSign size={18} />, path: "/Sales_Order" },
 ];
 
-// Fully responsive sidebar layout
-// - Mobile (sm & below): off-canvas drawer, toggled by hamburger
-// - Tablet/Desktop (md+): sticky left sidebar; can collapse to icons-only
-// How to use: drop <ResponsiveSidebarLayout/> anywhere in your app.
 export function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false); // desktop collapse
@@ -252,8 +248,6 @@ export function Sidebar() {
               <Route path="/purchase_order" element={<Purchase_Order />} />
               <Route path="/sales_order" element={<Sales_Order />} />
             </Routes>
-            {/* <Category></Category>
-            <Products></Products> */}
           </div>
         </main>
       </div>
